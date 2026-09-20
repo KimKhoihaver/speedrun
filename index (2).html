@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Khôi's Minecraft Hub</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #080b08;
+            color: #eeeeee;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            min-height: 72px;
+            padding: 0 7%;
+
+            background: rgba(8, 11, 8, 0.95);
+            border-bottom: 1px solid #293129;
+
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            font-family: "Press Start 2P", monospace;
+            font-size: 17px;
+            color: #72d64b;
+        }
+
+        .logo span {
+            color: #d8d8d8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #9ca39c;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #72d64b;
+        }
+
+
+        /* =========================
+           HERO
+           ========================= */
+
+        .hero {
+            min-height: 720px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            padding: 100px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(8, 11, 8, 0.35),
+                    rgba(8, 11, 8, 0.95)
+                ),
+                radial-gradient(
+                    circle at 50% 20%,
+                    #28551e,
+                    #10200e 35%,
+                    #080b08 75%
+                );
+        }
+
+        .hero-content {
+            max-width: 1000px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+
+            padding: 10px 18px;
+            margin-bottom: 30px;
+
+            background: #182817;
+            border: 1px solid #416c35;
+            border-radius: 6px;
+
+            color: #72d64b;
+
+            font-family: "Press Start 2P", monospace;
+            font-size: 10px;
+        }
+
+        .hero h1 {
+            font-family: "Press Start 2P", monospace;
+
+            font-size: clamp(32px, 6vw, 70px);
+
+            line-height: 1.4;
+
+            margin-bottom: 30px;
+        }
+
+        .hero h1 span {
+            color: #72d64b;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: auto;
+
+            color: #a8afa7;
+
+            font-size: 17px;
+            line-height: 2;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+
+            margin-top: 40px;
+
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 14px 25px;
+
+            border-radius: 7px;
+
+            font-weight: 700;
+
+            transition: 0.2s;
+        }
+
+        .button-primary {
+            background: #5db63d;
+            color: #071006;
+        }
+
+        .button-primary:hover {
+            background: #78dc53;
+            transform: translateY(-3px);
+        }
+
+        .button-secondary {
+            border: 1px solid #465047;
+            color: #c4cbc3;
+        }
+
+        .button-secondary:hover {
+            border-color: #72d64b;
+            color: #72d64b;
+        }
+
+
+        /* =========================
+           GENERAL
+           ========================= */
+
+        .section {
+            padding: 110px 0;
+            border-bottom: 1px solid #202620;
+        }
+
+        .container {
+            width: 84%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .label {
+            color: #72d64b;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 3px;
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: "Press Start 2P", monospace;
+
+            font-size: 30px;
+            line-height: 1.5;
+
+            margin-bottom: 25px;
+        }
+
+        .section-intro {
+            max-width: 900px;
+
+            color: #929b91;
+
+            line-height: 2;
+
+            margin-bottom: 55px;
+        }
+
+
+        /* =========================
+           SPEEDRUN
+           ========================= */
+
+        .speedrun-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+        .speedrun-card {
+            padding: 32px;
+
+            background: #101610;
+
+            border: 1px solid #2a352a;
+
+            border-radius: 10px;
+
+            transition: 0.25s;
+        }
+
+        .speedrun-card:hover {
+            transform: translateY(-7px);
+
+            border-color: #65c447;
+        }
+
+        .speedrun-number {
+            color: #72d64b;
+
+            font-family: "Press Start 2P", monospace;
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+        }
+
+        .speedrun-card h3 {
+            font-size: 21px;
+
+            margin-bottom: 12px;
+        }
+
+        .speedrun-card p {
+            color: #969e95;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+        }
+
+
+        /* =========================
+           TUTORIALS
+           ========================= */
+
+        .tutorial {
+            display: grid;
+
+            grid-template-columns: 150px 1fr;
+
+            gap: 35px;
+
+            padding: 38px 0;
+
+            border-bottom: 1px solid #283028;
+        }
+
+        .tutorial:last-child {
+            border-bottom: none;
+        }
+
+        .tutorial-number {
+            font-family: "Press Start 2P", monospace;
+
+            color: #72d64b;
+
+            font-size: 12px;
+
+            padding-top: 7px;
+        }
+
+        .tutorial h3 {
+            font-size: 25px;
+
+            margin-bottom: 15px;
+        }
+
+        .tutorial p {
+            color: #999f98;
+
+            line-height: 2;
+
+            margin-bottom: 15px;
+        }
+
+        .tip {
+            padding: 17px 20px;
+
+            background: #141c13;
+
+            border-left: 4px solid #72d64b;
+
+            color: #b6beb4;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           ROUTE
+           ========================= */
+
+        .route {
+            display: grid;
+
+            gap: 15px;
+
+            max-width: 900px;
+        }
+
+        .route-step {
+            display: grid;
+
+            grid-template-columns: 70px 1fr;
+
+            align-items: center;
+
+            padding: 22px;
+
+            background: #101510;
+
+            border: 1px solid #293229;
+
+            border-radius: 8px;
+        }
+
+        .route-number {
+            font-family: "Press Start 2P", monospace;
+
+            color: #72d64b;
+
+            font-size: 14px;
+        }
+
+        .route-step h3 {
+            margin-bottom: 4px;
+        }
+
+        .route-step p {
+            color: #929b91;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           CHECKLIST
+           ========================= */
+
+        .checklist {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+        .check {
+            padding: 20px;
+
+            background: #101510;
+
+            border: 1px solid #293229;
+
+            border-radius: 8px;
+
+            color: #b3bab1;
+        }
+
+        .check::before {
+            content: "☐";
+
+            color: #72d64b;
+
+            margin-right: 12px;
+
+            font-size: 20px;
+        }
+
+
+        /* =========================
+           COMMANDS
+           ========================= */
+
+        .command-box {
+            margin-bottom: 18px;
+
+            padding: 22px;
+
+            background: #0d100d;
+
+            border: 1px solid #293229;
+
+            border-radius: 8px;
+        }
+
+        .command-box code {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #72d64b;
+
+            font-family: monospace;
+
+            font-size: 15px;
+        }
+
+        .command-box p {
+            color: #909890;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           FARM SECTION
+           ========================= */
+
+        .farm-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 22px;
+        }
+
+        .farm {
+            padding: 32px;
+
+            background: #101510;
+
+            border: 1px solid #293229;
+
+            border-radius: 10px;
+        }
+
+        .farm h3 {
+            font-size: 22px;
+
+            margin-bottom: 12px;
+        }
+
+        .farm p {
+            color: #949c93;
+
+            line-height: 1.9;
+        }
+
+
+        /* =========================
+           SURVIVAL
+           ========================= */
+
+        .survival {
+            padding: 45px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #162614,
+                    #0e130e
+                );
+
+            border: 1px solid #3b6131;
+
+            border-radius: 12px;
+        }
+
+        .survival h3 {
+            font-family: "Press Start 2P", monospace;
+
+            font-size: 21px;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+        }
+
+        .survival p {
+            color: #9aa398;
+
+            line-height: 2;
+
+            margin-bottom: 20px;
+        }
+
+        .survival ul {
+            margin-left: 25px;
+
+            color: #aeb6aa;
+        }
+
+        .survival li {
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+            padding: 55px 20px;
+
+            text-align: center;
+
+            color: #606860;
+
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #72d64b;
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 850px) {
+
+            nav {
+                padding: 0 4%;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 9px;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+            .speedrun-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tutorial {
+                grid-template-columns: 1fr;
+
+                gap: 10px;
+            }
+
+            .checklist {
+                grid-template-columns: 1fr;
+            }
+
+            .farm-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 23px;
+            }
+
+            .survival {
+                padding: 28px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        KHÔI<span>MC</span>
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#home">Home</a>
+        </li>
+
+        <li>
+            <a href="#speedrun">Speedrun</a>
+        </li>
+
+        <li>
+            <a href="#tutorials">Tutorials</a>
+        </li>
+
+        <li>
+            <a href="#route">Route</a>
+        </li>
+
+        <li>
+            <a href="#commands">Commands</a>
+        </li>
+
+        <li>
+            <a href="#survival">Survival</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            MINECRAFT TUTORIALS & SPEEDRUNNING
+        </div>
+
+        <h1>
+            MASTER <span>MINECRAFT</span>
+        </h1>
+
+        <p>
+
+            Welcome to Khôi's Minecraft Hub — a collection
+            of tutorials, speedrunning strategies,
+            survival techniques, commands, farming ideas,
+            and useful Minecraft knowledge.
+
+            Whether you are trying to finish your first
+            world, improve your survival skills, or chase
+            faster speedrun times, this website is designed
+            to give you practical information step by step.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#speedrun"
+                class="button button-primary"
+            >
+                Start Speedrunning
+            </a>
+
+            <a
+                href="#tutorials"
+                class="button button-secondary"
+            >
+                Browse Tutorials
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SPEEDRUNNING
+========================= -->
+
+<section class="section" id="speedrun">
+
+    <div class="container">
+
+        <div class="label">
+            SPEEDRUNNING
+        </div>
+
+        <h2 class="section-title">
+            Learn the Basics of Speedrunning
+        </h2>
+
+        <p class="section-intro">
+
+            Minecraft speedrunning is about completing the
+            game as efficiently as possible. A good run is
+            not simply about moving quickly. You also need
+            to make decisions about resources, structures,
+            travel, combat, inventory management, and risk.
+
+            The biggest improvement usually comes from
+            understanding the route rather than simply
+            trying to move faster.
+
+        </p>
+
+
+        <div class="speedrun-grid">
+
+
+            <div class="speedrun-card">
+
+                <div class="speedrun-number">
+                    01
+                </div>
+
+                <h3>
+                    Fast Early Game
+                </h3>
+
+                <p>
+
+                    Gather only the resources you actually
+                    need. Wood, stone, food, iron, and
+                    basic tools should be collected quickly
+                    without spending too much time on
+                    unnecessary materials.
+
+                </p>
+
+            </div>
+
+
+            <div class="speedrun-card">
+
+                <div class="speedrun-number">
+                    02
+                </div>
+
+                <h3>
+                    Nether Preparation
+                </h3>
+
+                <p>
+
+                    Before entering the Nether, think about
+                    your equipment and resources. A reliable
+                    food supply, useful blocks, weapons,
+                    and enough materials for your route can
+                    prevent unnecessary deaths.
+
+                </p>
+
+            </div>
+
+
+            <div class="speedrun-card">
+
+                <div class="speedrun-number">
+                    03
+                </div>
+
+                <h3>
+                    Stronghold & End
+                </h3>
+
+                <p>
+
+                    Once you have the necessary Nether
+                    resources, the next goal is locating
+                    the stronghold and preparing for the
+                    End. Efficient navigation becomes
+                    especially important here.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TUTORIALS
+========================= -->
+
+<section class="section" id="tutorials">
+
+    <div class="container">
+
+        <div class="label">
+            TUTORIALS
+        </div>
+
+        <h2 class="section-title">
+            Minecraft Tutorials
+        </h2>
+
+        <p class="section-intro">
+
+            These tutorials focus on useful Minecraft
+            techniques that can help with both ordinary
+            survival worlds and speedrunning.
+
+        </p>
+
+
+        <div class="tutorial">
+
+
+            <div class="tutorial-number">
+                TUTORIAL 01
+            </div>
+
+            <div>
+
+                <h3>
+                    Getting Started
+                </h3>
+
+                <p>
+
+                    When you create a new world, your first
+                    priority should be obtaining wood and
+                    basic tools. Turn logs into planks,
+                    craft a crafting table, and make wooden
+                    tools only long enough to obtain stone.
+
+                    Once you have stone, upgrade your tools
+                    and start gathering food.
+
+                </p>
+
+                <div class="tip">
+
+                    TIP: Do not spend too long collecting
+                    materials you do not immediately need.
+                    Early-game efficiency is mostly about
+                    keeping your goals simple.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="tutorial">
+
+
+            <div class="tutorial-number">
+                TUTORIAL 02
+            </div>
+
+            <div>
+
+                <h3>
+                    Finding Iron Efficiently
+                </h3>
+
+                <p>
+
+                    Iron is extremely useful because it can
+                    be turned into buckets, shields, tools,
+                    armor, and many other items. In a normal
+                    survival world, explore caves and
+                    exposed stone areas while keeping track
+                    of your surroundings.
+
+                    For speedrunning, iron is particularly
+                    valuable because a bucket can dramatically
+                    change how quickly you can create and
+                    travel through a Nether portal setup.
+
+                </p>
+
+                <div class="tip">
+
+                    TIP: Prioritize the iron needed for your
+                    immediate route instead of trying to
+                    obtain a full set of iron equipment.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="tutorial">
+
+
+            <div class="tutorial-number">
+                TUTORIAL 03
+            </div>
+
+            <div>
+
+                <h3>
+                    Nether Preparation
+                </h3>
+
+                <p>
+
+                    The Nether is one of the most important
+                    dimensions for progressing toward the
+                    End. You may need blaze rods from a
+                    fortress and gold-related resources
+                    depending on the strategy you are using.
+
+                    Before entering, make sure your
+                    inventory is organized and that you
+                    have enough blocks and food to handle
+                    unexpected situations.
+
+                </p>
+
+                <div class="tip">
+
+                    TIP: Always know where your portal is.
+                    Getting lost in the Nether can cost far
+                    more time than the resources you gained.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="tutorial">
+
+
+            <div class="tutorial-number">
+                TUTORIAL 04
+            </div>
+
+            <div>
+
+                <h3>
+                    Stronghold Preparation
+                </h3>
+
+                <p>
+
+                    After obtaining the resources needed
+                    for your route, locate the stronghold.
+                    Keep your inventory organized and
+                    prepare enough food and blocks before
+                    entering.
+
+                    Once inside, explore carefully while
+                    looking for the End portal room.
+
+                </p>
+
+                <div class="tip">
+
+                    TIP: Remember important coordinates or
+                    landmarks so you can return to useful
+                    locations if necessary.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SPEEDRUN ROUTE
+========================= -->
+
+<section class="section" id="route">
+
+    <div class="container">
+
+        <div class="label">
+            SPEEDRUN ROUTE
+        </div>
+
+        <h2 class="section-title">
+            A Simple Run Structure
+        </h2>
+
+        <p class="section-intro">
+
+            Use this as a basic framework for practicing
+            your runs. As you improve, you can replace
+            individual steps with faster strategies.
+
+        </p>
+
+
+        <div class="route">
+
+
+            <div class="route-step">
+
+                <div class="route-number">
+                    01
+                </div>
+
+                <div>
+
+                    <h3>
+                        Spawn
+                    </h3>
+
+                    <p>
+                        Locate wood, food, and useful terrain.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="route-step">
+
+                <div class="route-number">
+                    02
+                </div>
+
+                <div>
+
+                    <h3>
+                        Basic Tools
+                    </h3>
+
+                    <p>
+                        Craft a table, stone tools, and
+                        collect essential materials.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="route-step">
+
+                <div class="route-number">
+                    03
+                </div>
+
+                <div>
+
+                    <h3>
+                        Nether
+                    </h3>
+
+                    <p>
+                        Enter the Nether and work toward
+                        the resources required for your route.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="route-step">
+
+                <div class="route-number">
+                    04
+                </div>
+
+                <div>
+
+                    <h3>
+                        Blaze Resources
+                    </h3>
+
+                    <p>
+                        Locate a fortress and obtain the
+                        necessary blaze-related resources.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="route-step">
+
+                <div class="route-number">
+                    05
+                </div>
+
+                <div>
+
+                    <h3>
+                        Locate the Stronghold
+                    </h3>
+
+                    <p>
+                        Return to the Overworld and navigate
+                        toward the stronghold.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="route-step">
+
+                <div class="route-number">
+                    06
+                </div>
+
+                <div>
+
+                    <h3>
+                        Enter the End
+                    </h3>
+
+                    <p>
+                        Find the portal room and activate
+                        the End portal.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="route-step">
+
+                <div class="route-number">
+                    07
+                </div>
+
+                <div>
+
+                    <h3>
+                        Defeat the Dragon
+                    </h3>
+
+                    <p>
+                        Destroy the End crystals and defeat
+                        the Ender Dragon.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CHECKLIST
+========================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="label">
+            PRACTICE
+        </div>
+
+        <h2 class="section-title">
+            Speedrun Checklist
+        </h2>
+
+        <p class="section-intro">
+
+            Before trying to improve your personal best,
+            practice each part of the run separately.
+            Consistency is more useful than simply hoping
+            for a perfect seed.
+
+        </p>
+
+
+        <div class="checklist">
+
+            <div class="check">
+                Get basic tools quickly
+            </div>
+
+            <div class="check">
+                Collect enough food
+            </div>
+
+            <div class="check">
+                Practice portal construction
+            </div>
+
+            <div class="check">
+                Learn Nether navigation
+            </div>
+
+            <div class="check">
+                Practice fortress combat
+            </div>
+
+            <div class="check">
+                Practice inventory management
+            </div>
+
+            <div class="check">
+                Learn stronghold navigation
+            </div>
+
+            <div class="check">
+                Practice the End fight
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COMMANDS
+========================= -->
+
+<section class="section" id="commands">
+
+    <div class="container">
+
+        <div class="label">
+            COMMANDS
+        </div>
+
+        <h2 class="section-title">
+            Useful Minecraft Commands
+        </h2>
+
+        <p class="section-intro">
+
+            Commands are especially useful when testing
+            farms, practicing mechanics, creating maps,
+            or experimenting with different Minecraft
+            systems.
+
+        </p>
+
+
+        <div class="command-box">
+
+            <code>/gamemode creative</code>
+
+            <p>
+                Switches the player to Creative mode when
+                commands are enabled.
+            </p>
+
+        </div>
+
+
+        <div class="command-box">
+
+            <code>/gamemode survival</code>
+
+            <p>
+                Switches the player to Survival mode.
+            </p>
+
+        </div>
+
+
+        <div class="command-box">
+
+            <code>/time set day</code>
+
+            <p>
+                Changes the world time to daytime.
+            </p>
+
+        </div>
+
+
+        <div class="command-box">
+
+            <code>/weather clear</code>
+
+            <p>
+                Clears the current weather.
+            </p>
+
+        </div>
+
+
+        <div class="command-box">
+
+            <code>/locate structure minecraft:stronghold</code>
+
+            <p>
+                In versions where this syntax is supported,
+                searches for a stronghold.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FARMS
+========================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="label">
+            FARMS
+        </div>
+
+        <h2 class="section-title">
+            Useful Survival Farms
+        </h2>
+
+        <p class="section-intro">
+
+            Farms allow you to turn renewable resources
+            into reliable supplies. They are especially
+            useful in long-term survival worlds.
+
+        </p>
+
+
+        <div class="farm-grid">
+
+
+            <div class="farm">
+
+                <h3>
+                    🌾 Wheat Farm
+                </h3>
+
+                <p>
+
+                    A simple wheat farm provides food and
+                    wheat for breeding animals. It is easy
+                    to build early in a survival world and
+                    can later be expanded.
+
+                </p>
+
+            </div>
+
+
+            <div class="farm">
+
+                <h3>
+                    🐄 Animal Farm
+                </h3>
+
+                <p>
+
+                    Keeping cows or other livestock gives
+                    you a renewable source of food and
+                    useful materials.
+
+                </p>
+
+            </div>
+
+
+            <div class="farm">
+
+                <h3>
+                    🧟 Mob Farm
+                </h3>
+
+                <p>
+
+                    Mob farms can provide drops and
+                    experience while reducing the amount
+                    of time spent manually fighting mobs.
+
+                </p>
+
+            </div>
+
+
+            <div class="farm">
+
+                <h3>
+                    ⚙️ Iron Farm
+                </h3>
+
+                <p>
+
+                    Iron farms can provide a renewable iron
+                    supply for tools, buckets, rails,
+                    hoppers, and many other useful items.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SURVIVAL
+========================= -->
+
+<section class="section" id="survival">
+
+    <div class="container">
+
+        <div class="label">
+            SURVIVAL
+        </div>
+
+        <h2 class="section-title">
+            Survival Knowledge
+        </h2>
+
+
+        <div class="survival">
+
+            <h3>
+                Survive Longer. Prepare Better.
+            </h3>
+
+            <p>
+
+                Survival Minecraft rewards preparation.
+                Even if your goal is not speedrunning,
+                having organized resources and a clear
+                plan makes dangerous situations much easier
+                to handle.
+
+            </p>
+
+            <p>
+                Some useful habits include:
+            </p>
+
+            <ul>
+
+                <li>
+                    Keep important items organized.
+                </li>
+
+                <li>
+                    Carry enough food before exploring.
+                </li>
+
+                <li>
+                    Bring blocks when entering dangerous
+                    areas.
+                </li>
+
+                <li>
+                    Keep track of important coordinates.
+                </li>
+
+                <li>
+                    Avoid carrying everything valuable
+                    when exploring somewhere dangerous.
+                </li>
+
+                <li>
+                    Prepare equipment before entering
+                    the Nether or End.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        Minecraft Hub by <strong>Khôi</strong>
+    </p>
+
+    <p>
+        Tutorials • Speedrunning • Survival • Redstone
+    </p>
+
+</footer>
+
+
+</body>
+</html>
